@@ -1,13 +1,5 @@
-import { DollarSign, TrendingUp, AlertTriangle, BarChart3, Database } from "lucide-react";
-import { StatCard } from "@/components/StatCard";
-import { BarChartCard } from "@/components/charts/BarChartCard";
-import { LineChartCard } from "@/components/charts/LineChartCard";
-import { AreaChartCard } from "@/components/charts/AreaChartCard";
-import { PieChartCard } from "@/components/charts/PieChartCard";
-import { ScatterChartCard } from "@/components/charts/ScatterChartCard";
-import { RadarChartCard } from "@/components/charts/RadarChartCard";
-import { DataTable } from "@/components/DataTable";
-import { summaryStats } from "@/data/severityData";
+import { BarChart3, Database } from "lucide-react";
+import { DashboardTabs } from "@/components/DashboardTabs";
 
 const Index = () => {
   return (
@@ -21,76 +13,25 @@ const Index = () => {
                 <BarChart3 className="h-6 w-6 text-primary" />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-gradient">Severity Cost Analytics</h1>
-                <p className="text-xs text-muted-foreground">Parquet Data Visualization Dashboard</p>
+                <h1 className="text-xl font-bold text-gradient">Parquet Data Analytics</h1>
+                <p className="text-xs text-muted-foreground">Multi-Dataset Visualization Dashboard</p>
               </div>
             </div>
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <Database className="h-4 w-4" />
-              <span>Data source: parquet file</span>
+              <span>2 Datasets Loaded</span>
             </div>
           </div>
         </div>
       </header>
 
-      <main className="container mx-auto px-6 py-8 space-y-8">
-        {/* Stats Grid */}
-        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <StatCard
-            title="Total Cost"
-            value={`$${summaryStats.totalCost.toLocaleString()}`}
-            subtitle="Across all severity levels"
-            icon={DollarSign}
-            variant="primary"
-          />
-          <StatCard
-            title="Average Cost"
-            value={`$${summaryStats.avgCost.toLocaleString()}`}
-            subtitle="Per severity level"
-            icon={TrendingUp}
-          />
-          <StatCard
-            title="Max Cost"
-            value={`$${summaryStats.maxCost.toLocaleString()}`}
-            subtitle="Critical severity"
-            icon={AlertTriangle}
-            variant="accent"
-          />
-          <StatCard
-            title="Data Points"
-            value={summaryStats.totalRecords.toString()}
-            subtitle="Severity levels analyzed"
-            icon={Database}
-          />
-        </section>
-
-        {/* Primary Charts */}
-        <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <BarChartCard />
-          <LineChartCard />
-        </section>
-
-        {/* Secondary Charts */}
-        <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <AreaChartCard />
-          <PieChartCard />
-        </section>
-
-        {/* Additional Analysis */}
-        <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <ScatterChartCard />
-          <RadarChartCard />
-        </section>
-
-        {/* Data Table */}
-        <section>
-          <DataTable />
-        </section>
+      <main className="container mx-auto px-6 py-8">
+        <DashboardTabs />
 
         {/* Footer */}
-        <footer className="text-center py-6 border-t border-border/30">
+        <footer className="text-center py-6 border-t border-border/30 mt-8">
           <p className="text-sm text-muted-foreground">
-            Visualizing severity_score and avg_cost data from Spark-generated Parquet file
+            Visualizing Spark-generated Parquet files with comprehensive analytics
           </p>
         </footer>
       </main>
